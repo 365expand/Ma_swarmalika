@@ -1,0 +1,16 @@
+{
+  "name": "Swarmalika - Mili Chakraborty",
+  "short_name": "Swarmalika",
+  "description": "Portfolio & Music Academy of Mili Chakraborty. Classical, Rabindra Sangeet, Modern Bengali & Hindi songs, and live orchestra performances.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#181615",
+  "theme_color": "#181615",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ]
+}

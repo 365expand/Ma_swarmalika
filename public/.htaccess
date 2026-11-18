@@ -1,0 +1,89 @@
+# ==============================================================================
+# SWARMALIKA (.htaccess for Hostinger hPanel / Apache Shared Hosting)
+# Domain: swarmalika.in
+# ==============================================================================
+
+# 1. Set Default Index Page
+DirectoryIndex index.html index.php
+
+# 2. Prevent Directory Browsing (Prevents 403 Forbidden on folders without index)
+Options -Indexes +FollowSymLinks
+
+# 3. Enable URL Rewriting
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Force HTTPS (optional - Hostinger usually handles this, but ensures secure connection)
+    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP_HOST} ^(www\.)?swarmalika\.in$ [NC]
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Don't rewrite real existing files or directories
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Clean URL support: If URL matches an .html file, serve it directly
+    RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+    RewriteRule ^([^/]+)/?$ $1.html [L]
+
+    # Single Page Fallback (Route to index.html if route not found)
+    RewriteRule ^ index.html [L]
+</IfModule>
+
+# 4. Custom 404 Error Page
+ErrorDocument 404 /404.html
+
+# 5. Enable GZIP / Deflate Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# 6. Browser Caching (Speeds up loading for repeat visitors)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+
+    # HTML - don't cache too long so updates show immediately
+    ExpiresByType text/html "access plus 0 seconds"
+
+    # CSS & JavaScript (Next.js assets in _next/static have hashed names)
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType application/x-javascript "access plus 1 year"
+
+    # Media & Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Web Fonts
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# 7. Basic Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

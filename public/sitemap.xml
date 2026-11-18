@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://swarmalika.in/</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://swarmalika.in/img/hero.jpg</image:loc>
+      <image:title>Mili Chakraborty - Swarmalika Singer &amp; Music Teacher</image:title>
+      <image:caption>Vocal mentor and live singer for Rabindra Sangeet, Classical and Modern Bengali Hindi Songs</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://swarmalika.in/img/about.jpg</image:loc>
+      <image:title>Mili Chakraborty Vocal Sadhana</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://swarmalika.in/img/teaching.jpg</image:loc>
+      <image:title>Swarmalika Music Classes Chakdaha</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://swarmalika.in/img/liveperformance.jpg</image:loc>
+      <image:title>Live Stage &amp; Orchestra Performance</image:title>
+    </image:image>
+  </url>
+</urlset>
